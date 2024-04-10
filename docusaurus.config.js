@@ -9,7 +9,7 @@ const config = {
   title: 'Bitlayer',
   tagline: 'The first Bitcoin security-equivalent Layer2 based on BitVM',
   url: 'https://docs.bitlayer.org',
-  baseUrl: '/',
+  baseUrl: '/EXAPI',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/bitlayer.ico',
