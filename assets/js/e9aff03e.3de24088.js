@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[6977],{7703:function(e){e.exports=JSON.parse('{"Hello Bitlayer":{"allTagsPath":"/EXAPI/blog/tags","slug":"/EXAPI/blog/tags/hello-bitlayer","name":"Hello Bitlayer","count":1,"permalink":"/EXAPI/blog/tags/hello-bitlayer"}}')}}]);
