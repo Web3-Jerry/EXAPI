@@ -63,11 +63,11 @@ https://api-testnet.bitlayer.org/scan/api?module=account&action=balancemulti&add
 
 ## Get a list of 'Normal' Transactions By Address
 Returns the list of transactions performed by an address, with optional pagination.
+[Optional Parameters] startblock: starting blockNo to retrieve results, endblock: ending blockNo to retrieve results
 
 :::tip
 
-(Returns up to a maximum of the last 10000 transactions only)
-[Optional Parameters] startblock: starting blockNo to retrieve results, endblock: ending blockNo to retrieve results
+Returns up to a maximum of the last 10000 transactions only 
 
 :::
 
@@ -78,7 +78,7 @@ https://api-testnet.bitlayer.org/scan/api?module=account&action=txlist&address=0
 or
 
 :::tip
-(To get paginated results use `page=<page number>` and `offset=<max records to return>`)
+To get paginated results use `page=<page number>` and `offset=<max records to return>`
 :::
 
 ```json
@@ -96,7 +96,285 @@ https://api-testnet.bitlayer.org/scan/api?module=account&action=txlistinternal&a
 | endblock | the `integer` block number to stop searching for transactions |
 | page | the `integer` page number, if pagination is enabled |
 | offset | the number of transactions displayed per page |
-| sort | the sorting preference, use `asc` to sort by ascending and `desc` to sort by descendin |
+| sort | the sorting preference, use `asc` to sort by ascending and `desc` to sort by descending |
+
+    
+  </TabItem>
+  <TabItem value="response" label="Response">
+    Sample Response
+      
+      (Returned 'isError' values: 0=No Error, 1=Got Error)
+      
+
+  </TabItem>
+</Tabs>
+
+## Get a list of 'Internal' Transactions By Address
+Returns the list of internal transactions performed by an address, with optional pagination.
+
+:::tip
+
+Returns up to a maximum of the last 10000 transactions only 
+
+[Optional Parameters] startblock: starting blockNo to retrieve results, endblock: ending blockNo to retrieve results
+
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=txlistinternal&address=0x6630fcee2a4822f2df842a61d69dc4061bcaa534&startblock=0&endblock=2702578&sort=asc
+```
+
+or
+
+:::tip
+To get paginated results use `page=<page number>` and `offset=<max records to return>`
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=txlistinternal&address=0x6630fcee2a4822f2df842a61d69dc4061bcaa534&startblock=0&endblock=2702578&page=1&offset=10&sort=asc
+```
+
+<Tabs>
+  <TabItem value="request" label="Request" default>
+    Query Parameters
+
+| Parameter | Description                                            |
+|---|---|
+| address | the `string` representing the address to check balance |
+| startblock | the `integer` block number to start searching for transactions |
+| endblock | the `integer` block number to stop searching for transactions |
+| page | the `integer` page number, if pagination is enabled |
+| offset | the number of transactions displayed per page |
+| sort | the sorting preference, use `asc` to sort by ascending and `desc` to sort by descending |
+
+    
+  </TabItem>
+  <TabItem value="response" label="Response">
+    Sample Response
+      
+      (Returned 'isError' values: 0=No Error, 1=Got Error)
+      
+
+  </TabItem>
+</Tabs>
+
+
+## Get "Internal Transactions" by Transaction Hash
+Returns the list of internal transactions performed within a transaction.
+
+:::tip
+
+Returns up to a maximum of the last 10000 transactions only 
+
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=txlistinternal&txhash=0x211beec218f9a19ba3acb440ecacbcd7d5bb1dfad7f591e24ffc999efb7f9d69
+```
+
+<Tabs>
+  <TabItem value="request" label="Request" default>
+    Query Parameters
+
+| Parameter | Description                                            |
+|---|---|
+| txhash | the `string` representing the transaction hash to check for internal transactions |
+
+    
+  </TabItem>
+  <TabItem value="response" label="Response">
+    Sample Response
+      
+     (Returned 'isError' values: 0=Ok, 1=Rejected/Cancelled)
+
+
+
+  </TabItem>
+</Tabs>
+
+## Get "Internal Transactions" by Block Range
+Returns the list of internal transactions performed within a block range, with optional pagination.
+
+:::tip
+
+Returns up to a maximum of the last 10000 transactions only 
+
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=txlistinternal&startblock=0&endblock=2702578&page=1&offset=10&sort=asc
+```
+
+<Tabs>
+  <TabItem value="request" label="Request" default>
+    Query Parameters
+
+| Parameter | Description                                            |
+|---|---|
+| startblock | the `integer` block number to start searching for transactions |
+| endblock | the `integer` block number to stop searching for transactions |
+| page | the `integer` page number, if pagination is enabled |
+| offset | the number of transactions displayed per page |
+| sort | the sorting preference, use `asc` to sort by ascending and `desc` to sort by descending |
+
+    
+  </TabItem>
+  <TabItem value="response" label="Response">
+    Sample Response
+      
+     (Returned 'isError' values: 0=Ok, 1=Rejected/Cancelled)
+
+
+
+  </TabItem>
+</Tabs>
+
+## Get a list of "ERC-20 - Token Transfer Events" by Address
+Returns the list of ERC-20 tokens transferred by an address, with optional filtering by token contract.
+[Optional Parameters] startblock: starting blockNo to retrieve results, endblock: ending blockNo to retrieve results
+
+:::tip
+
+Returns up to a maximum of the last 10000 transactions only 
+
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=tokentx&address=0xab40fe1dae842b209599269b8dafb0c54a743438&startblock=0&endblock=999999999&sort=asc
+```
+
+or
+
+:::tip
+To get paginated results use `page=<page number>` and `offset=<max records to return>`
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=tokentx&contractaddress=0xab40fe1dae842b209599269b8dafb0c54a743438&page=1&offset=100&sort=asc
+```
+
+or
+
+:::tip
+(To get transfer events for a specific token contract, include the contractaddress parameter)
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=tokentx&contractaddress=0xab40fe1dae842b209599269b8dafb0c54a743438&address=0xab40fe1dae842b209599269b8dafb0c54a743438&page=1&offset=100&sort=asc
+```
+
+<Tabs>
+  <TabItem value="request" label="Request" default>
+    Query Parameters
+
+| Parameter | Description                                            |
+|---|---|
+| address | the `string` representing the address to check balance |
+| contractaddress | the `string` representing the token contract address to check for balance |
+| startblock | the `integer` block number to start searching for transactions |
+| endblock | the `integer` block number to stop searching for transactions |
+| page | the `integer` page number, if pagination is enabled |
+| offset | the number of transactions displayed per page |
+| sort | the sorting preference, use `asc` to sort by ascending and `desc` to sort by descending |
+
+    
+  </TabItem>
+  <TabItem value="response" label="Response">
+    Sample Response
+      
+      (Returned 'isError' values: 0=No Error, 1=Got Error)
+      
+
+  </TabItem>
+</Tabs>
+
+## Get a list of "ERC-721 - Token Transfer Events" by Address
+Returns the list of ERC-721 ( NFT ) tokens transferred by an address, with optional filtering by token contract.
+[Optional Parameters] startblock: starting blockNo to retrieve results, endblock: ending blockNo to retrieve results
+
+:::tip
+
+Returns up to a maximum of the last 10000 transactions only 
+
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=tokennfttx&address=0x6975be450864c02b4613023c2152ee0743572325&startblock=0&endblock=999999999&sort=asc
+```
+
+or
+
+:::tip
+To get paginated results use `page=<page number>` and `offset=<max records to return>`
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=tokennfttx&contractaddress=0x06012c8cf97bead5deae237070f9587f8e7a266d&page=1&offset=100&sort=asc
+```
+
+or
+
+:::tip
+(To get transfer events for a specific token contract, include the contractaddress parameter)
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=tokennfttx&contractaddress=0x06012c8cf97bead5deae237070f9587f8e7a266d&address=0x6975be450864c02b4613023c2152ee0743572325&page=1&offset=100&sort=asc
+```
+
+<Tabs>
+  <TabItem value="request" label="Request" default>
+    Query Parameters
+
+| Parameter | Description                                            |
+|---|---|
+| address | the `string` representing the address to check balance |
+| contractaddress | the `string` representing the token contract address to check for balance |
+| startblock | the `integer` block number to start searching for transactions |
+| endblock | the `integer` block number to stop searching for transactions |
+| page | the `integer` page number, if pagination is enabled |
+| offset | the number of transactions displayed per page |
+| sort | the sorting preference, use `asc` to sort by ascending and `desc` to sort by descending |
+
+    
+  </TabItem>
+  <TabItem value="response" label="Response">
+    Sample Response
+      
+      (Returned 'isError' values: 0=No Error, 1=Got Error)
+      
+
+  </TabItem>
+</Tabs>
+
+## Get list of Blocks Validated by Address
+Returns the list of blocks validated by an address.
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=tokennfttx&address=0x6975be450864c02b4613023c2152ee0743572325&startblock=0&endblock=999999999&sort=asc
+```
+
+or
+
+:::tip
+To get paginated results use `page=<page number>` and `offset=<max records to return>`
+:::
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=account&action=tokennfttx&contractaddress=0x06012c8cf97bead5deae237070f9587f8e7a266d&page=1&offset=100&sort=asc
+```
+
+
+<Tabs>
+  <TabItem value="request" label="Request" default>
+    Query Parameters
+
+| Parameter | Description                                            |
+|---|---|
+| address | the `string` representing the address to check balance |
+| blocktype | the `string` pre-defined block type, either `blocks` for canonical blocks or `uncles` for uncle blocks only |
+| page | the `integer` page number, if pagination is enabled |
+| offset | the number of transactions displayed per page |
 
     
   </TabItem>
