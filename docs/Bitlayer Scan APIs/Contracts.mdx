@@ -1,0 +1,50 @@
+---
+sidebar_position: 2
+title: Contracts
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Get Contract ABI for Verified Contract Source Codes
+Returns the Contract Application Binary Interface ( ABI ) of a verified smart contract.
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=contract&action=getabi&address=0xc9121e476155ebf0b794b7b351808af3787e727d
+```
+
+<Tabs>
+  <TabItem value="request" label="Request" default>
+    Query Parameters
+
+| Parameter | Description |
+|---|---|
+| address | the `string` representing the address to check balance |
+| tag     | the `string` representing the pre-defined block parameter: `earliest`, `pending`, or `latest` |
+    
+  </TabItem>
+  <TabItem value="example" label="Example">
+
+```json
+var Web3 = require('web3');
+var web3 = new Web3(new Web3.providers.HttpProvider());
+var version = web3.version.api;
+
+$.getJSON('//api-testnet.bitlayer.org/scan/api?module=contract&action=getabi&address=0x66a79d23e58475d2738179ca52cd0b41d73f0bea', function (data) {
+ var contractABI = "";
+  contractABI = JSON.parse(data.result);
+ if (contractABI != ''){
+  var MyContract = web3.eth.contract(contractABI);
+  var myContractInstance = MyContract.at("0x66a79d23e58475d2738179ca52cd0b41d73f0bea");
+  var result = myContractInstance.memberId("0xfe8ad7dd2f564a877cc23feea6c0a9cc2e783715");
+  console.log("result1 : " + result);
+  var result = myContractInstance.members(1);
+  console.log("result2 : " + result);
+ } else {
+  console.log("Error");
+ }
+});
+```
+
+  </TabItem>
+</Tabs>
