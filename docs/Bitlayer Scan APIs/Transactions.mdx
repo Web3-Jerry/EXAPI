@@ -1,0 +1,31 @@
+---
+sidebar_position: 3
+title: Transactions
+---
+
+## Check Transaction Receipt Status
+The status field returns 0 for failed transactions，1 for successful transactions and 2 for pending transactions.
+
+```json
+https://api-testnet.bitlayer.org/scan/api?module=transaction&action=gettxreceiptstatus&txhash=0x211beec218f9a19ba3acb440ecacbcd7d5bb1dfad7f591e24ffc999efb7f9d69
+```
+
+<Tabs>
+  <TabItem value="request" label="Request" default>
+    Query Parameters
+
+| Parameter | Description                                            |
+|---|---|
+| txhash | the `string` representing the transaction hash to check the execution status |
+
+    
+  </TabItem>
+  <TabItem value="response" label="Response">
+    Sample Response
+      
+     (Returned 'isError' values: 0=Ok, 1=Rejected/Cancelled)
+
+
+
+  </TabItem>
+</Tabs>
