@@ -19,7 +19,7 @@ const config: HardhatUserConfig = {
   ...
   networks: {
     bitlayer: {
-      url: ["https://testnet-rpc.bitlayer.org" || "",
+      url: "https://testnet-rpc.bitlayer.org" || "",
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
