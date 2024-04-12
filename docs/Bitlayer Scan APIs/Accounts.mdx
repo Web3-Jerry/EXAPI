@@ -8,17 +8,19 @@ import TabItem from '@theme/TabItem';
 
 ## Get BTC Balance for a single address
 Returns the BTC balance of a given address.
-```
+
+```json
 https://api-testnet.bitlayer.org/scan/api?module=account&action=balance&address=0x6630fcee2a4822f2df842a61d69dc4061bcaa534&tag=latest
 ```
+
 <Tabs>
   <TabItem value="request" label="Request" default>
     Query Parameters
 
     | Parameter | Description                                            |
     | --------- | ------------------------------------------------------ |
-    | address | The <string> representing the address to check balance. |
-    | tag     | The <string> representing the pre-defined block parameter: <earliest>, <pending>, or <latest>. |
+    | address | The string representing the address to check balance. |
+    | tag     | The string representing the pre-defined block parameter: earliest, pending, or latest. |
     
   </TabItem>
   <TabItem value="response" label="Response">
