@@ -6,8 +6,11 @@ title: Logs
 The Event Log API was designed to provide an alternative to the native eth_getLogs. Below are the list of supported filter parameters:
 
 · fromBlock, toBlock, address
+
 · topic0, topic1, topic2, topic3 (32 Bytes per topic)
+
 · topic0_1_opr (and|or between topic0 & topic1), topic1_2_opr (and|or between topic1 & topic2), topic2_3_opr (and|or between topic2 & topic3),
+
     topic0_2_opr (and|or between topic0 & topic2), topic0_3_opr (and|or between topic0 & topic3), topic1_3_opr (and|or between topic1 & topic3)
 
 - FromBlock & ToBlock accepts the blocknumber (integer, NOT hex) or 'latest' (earliest & pending is NOT supported yet)
@@ -26,5 +29,11 @@ https://api-testnet.bitlayer.org/scan/api?module=logs&action=getLogs&address=0xa
 Get Event Logs from block number 4993830 to block 4993832 , where log address = 0xe561479bebee0e606c19bb1973fc4761613e3c42, topic[0] = 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef 'AND' topic[1] = 0x000000000000000000000000730e2065b9daee84c3003c05bf6d2b3a08e55667
 
 ```json
-https://api-testnet.bitlayer.org/scan/api?module=logs&action=getLogs&fromBlock=4993830&toBlock=4993832&address=0xe561479bebee0e606c19bb1973fc4761613e3c42&topic0=0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef&topic0_1_opr=and&topic1=0x000000000000000000000000730e2065b9daee84c3003c05bf6d2b3a08e55667
+https://api-testnet.bitlayer.org/scan/api?module=logs
+&action=getLogs
+&fromBlock=4993830
+&toBlock=4993832
+&address=0xe561479bebee0e606c19bb1973fc4761613e3c42
+&topic0=0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+&topic0_1_opr=and&topic1=0x000000000000000000000000730e2065b9daee84c3003c05bf6d2b3a08e55667
 ```
